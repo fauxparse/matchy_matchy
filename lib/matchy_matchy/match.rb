@@ -1,12 +1,20 @@
 # frozen_string_literal: true
 
+require 'cry'
+
 module MatchyMatchy
   class Match
-    attr_reader :target, :candidate
+    include Cry
 
-    def initialize(target:, candidate:)
-      @target = target
+    attr_reader :candidate, :index
+
+    def initialize(candidate:, index:)
       @candidate = candidate
+      @index = index
+    end
+
+    def target
+      candidate.preferences[index]
     end
 
     def target_object
@@ -19,6 +27,14 @@ module MatchyMatchy
 
     def <=>(other)
       target.index(candidate) <=> target.index(other.candidate)
+    end
+
+    def mutual?
+      target.include?(candidate)
+    end
+
+    def reject!
+      publish!(:reject)
     end
   end
 end

@@ -14,6 +14,10 @@ module MatchyMatchy
       self
     end
 
+    def first_choice
+      preferences.first
+    end
+
     alias << prefer
 
     def include?(entity)
@@ -22,6 +26,10 @@ module MatchyMatchy
 
     def index(entity)
       preferences.find_index(entity)
+    end
+
+    def to_s
+      object.to_s
     end
   end
 end
