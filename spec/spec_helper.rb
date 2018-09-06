@@ -1,4 +1,10 @@
 require 'bundler/setup'
+require 'simplecov'
+
+SimpleCov.start do
+  add_filter '/spec/'
+end
+
 require 'matchy_matchy'
 
 RSpec.configure do |config|

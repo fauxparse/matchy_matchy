@@ -2,6 +2,7 @@ require 'cry'
 
 module MatchyMatchy
   class Match
+    include Comparable
     include Cry
 
     attr_reader :candidate, :index
@@ -15,12 +16,8 @@ module MatchyMatchy
       candidate.preferences[index]
     end
 
-    def target_object
-      target.object
-    end
-
-    def candidate_object
-      candidate.object
+    def eql?(other)
+      target.eql?(other.target) && candidate.eql?(other.candidate)
     end
 
     def <=>(other)

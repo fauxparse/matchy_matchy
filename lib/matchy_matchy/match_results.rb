@@ -14,7 +14,7 @@ module MatchyMatchy
 
     def by_target
       targets.
-        map { |t| [t.object, @matches[t].map(&:candidate_object)] }.
+        map { |t| [t.object, @matches[t].map { |m| m.candidate.object }] }.
         to_h.
         freeze
     end

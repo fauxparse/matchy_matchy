@@ -1,12 +1,33 @@
 module MatchyMatchy
-  class Candidate < Entity
-    def propose_to_first_choice!
-      preferences.first.propose!(self)
+  class Candidate
+    attr_reader :object, :preferences
+
+    def initialize(object)
+      @object = object
+      @preferences = []
     end
 
-    def rejected_by(target)
-      next_target = preferences[index(target) + 1]
-      next_target.propose!(self) if next_target
+    def prefer(*entities)
+      preferences.push(*entities)
+      self
+    end
+
+    alias << prefer
+
+    def include?(entity)
+      preferences.include?(entity)
+    end
+
+    def eql?(other)
+      object.eql?(other.object)
+    end
+
+    def index(entity)
+      preferences.find_index(entity)
+    end
+
+    def to_s
+      object.to_s
     end
   end
 end

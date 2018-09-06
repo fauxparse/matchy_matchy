@@ -22,6 +22,8 @@ module MatchyMatchy
       end
     end
 
+    private
+
     def target(object)
       @targets[object] ||= Target.new(object)
     end
