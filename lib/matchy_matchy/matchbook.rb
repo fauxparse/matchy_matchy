@@ -6,7 +6,8 @@ module MatchyMatchy
     end
 
     def build_targets(targets)
-      targets.to_a.map do |object, (preferences, capacity)|
+      targets.to_a.map do |object, row|
+        preferences, capacity = parse_target_row(row)
         target(object).tap do |t|
           t.capacity = capacity
           t.prefer(*preferences.map { |c| candidate(c) })
@@ -30,6 +31,13 @@ module MatchyMatchy
 
     def candidate(object)
       @candidates[object] ||= Candidate.new(object)
+    end
+
+    def parse_target_row(row)
+      return row if row.size == 2 &&
+          row.first.respond_to?(:map) &&
+          row.last.respond_to?(:zero?)
+      [row, 1]
     end
   end
 end

@@ -21,5 +21,27 @@ module MatchyMatchy
         z: [%i[b d], 2],
       )
     end
+
+    describe '#build_targets' do
+      subject(:results) { matchbook.build_targets(targets) }
+
+      context 'without explicit capacities' do
+        let(:targets) do
+          {
+            x: %i[a b c d],
+            y: %i[c a d],
+            z: %i[b d],
+          }
+        end
+
+        it 'has a default capacity' do
+          expect(results[2].capacity).to eq 1
+        end
+
+        it 'parses the configuration correctly' do
+          expect(results[2].preferences.size).to eq 2
+        end
+      end
+    end
   end
 end

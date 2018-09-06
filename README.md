@@ -68,10 +68,21 @@ results.by_target
 # }
 ```
 
-The `candidates` and `targets` can be pretty much any type of object.
-They can even clash, which makes it safe to use things like database IDs
-unambiguously: equal objects that are referenced in both collections
-will be treated separately by the `MatchMaker`.
+The `candidates` and `targets` can be pretty much any type of object.  They can
+even clash, which makes it safe to use things like database IDs unambiguously:
+equal objects that are referenced in both collections will be treated separately
+by the `MatchMaker`.
+
+You can also specify the `targets` without an explicit capacity, in which case a
+default capacity of `1` will be assumed:
+
+```ruby
+targets = {
+  'Mercy'   => %w[Darrius Joseph],
+  'City'    => %w[Darrius Arthur Sunny Latha Joseph],
+  'General' => %w[Darrius Arthur Joseph Latha],
+}
+```
 
 ## Development
 
