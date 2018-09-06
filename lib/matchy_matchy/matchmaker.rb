@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 module MatchyMatchy
   class MatchMaker
     def initialize(targets:, candidates:)
@@ -30,9 +28,9 @@ module MatchyMatchy
     end
 
     def match(candidate, index)
-      Match
-        .new(candidate: candidate, index: index)
-        .on(:reject) { propose(candidate, index + 1) }
+      Match.
+        new(candidate: candidate, index: index).
+        on(:reject) { propose(candidate, index + 1) }
     end
   end
 end

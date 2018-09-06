@@ -9,5 +9,4 @@ require 'matchy_matchy/match_results'
 require 'matchy_matchy/matchmaker'
 
 module MatchyMatchy
-  # Your code goes here...
 end

@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'spec_helper'
 
 RSpec.describe MatchyMatchy::MatchMaker do
@@ -11,7 +9,7 @@ RSpec.describe MatchyMatchy::MatchMaker do
       'Sunny'   => %w[City Mercy],
       'Joseph'  => %w[City General Mercy],
       'Latha'   => %w[Mercy City General],
-      'Darrius' => %w[City Mercy General]
+      'Darrius' => %w[City Mercy General],
     }
   end
 
@@ -19,7 +17,7 @@ RSpec.describe MatchyMatchy::MatchMaker do
     {
       'Mercy'   => [%w[Darrius Joseph], 2],
       'City'    => [%w[Darrius Arthur Sunny Latha Joseph], 2],
-      'General' => [%w[Darrius Arthur Joseph Latha], 2]
+      'General' => [%w[Darrius Arthur Joseph Latha], 2],
     }
   end
 
@@ -33,7 +31,7 @@ RSpec.describe MatchyMatchy::MatchMaker do
       {
         'Mercy'   => [],
         'City'    => %w[Darrius Arthur],
-        'General' => %w[Joseph Latha]
+        'General' => %w[Joseph Latha],
       }
     end
 
@@ -46,7 +44,7 @@ RSpec.describe MatchyMatchy::MatchMaker do
           2 => [2, 1],
           3 => [2, 3, 1],
           4 => [1, 2, 3],
-          5 => [2, 1, 3]
+          5 => [2, 1, 3],
         }
       end
 
@@ -54,7 +52,7 @@ RSpec.describe MatchyMatchy::MatchMaker do
         {
           1 => [[5, 3], 2],
           2 => [[5, 1, 2, 4, 3], 2],
-          3 => [[5, 1, 3, 4], 2]
+          3 => [[5, 1, 3, 4], 2],
         }
       end
 
@@ -62,7 +60,7 @@ RSpec.describe MatchyMatchy::MatchMaker do
         {
           1 => [],
           2 => [5, 1],
-          3 => [3, 4]
+          3 => [3, 4],
         }
       end
 
@@ -78,7 +76,7 @@ RSpec.describe MatchyMatchy::MatchMaker do
         'Sunny'   => nil,
         'Joseph'  => 'General',
         'Latha'   => 'General',
-        'Darrius' => 'City'
+        'Darrius' => 'City',
       }
     end
 

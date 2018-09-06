@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 module MatchyMatchy
   class MatchResults
     attr_reader :targets, :candidates
@@ -15,10 +13,10 @@ module MatchyMatchy
     end
 
     def by_target
-      targets
-        .map { |t| [t.object, @matches[t].map(&:candidate_object)] }
-        .to_h
-        .freeze
+      targets.
+        map { |t| [t.object, @matches[t].map(&:candidate_object)] }.
+        to_h.
+        freeze
     end
 
     def by_candidate

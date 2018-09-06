@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 module MatchyMatchy
   class Candidate < Entity
     def propose_to_first_choice!

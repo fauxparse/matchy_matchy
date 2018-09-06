@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 module MatchyMatchy
   class Entity
     attr_reader :object, :preferences
