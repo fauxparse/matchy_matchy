@@ -8,4 +8,8 @@ require 'matchy_matchy/match_results'
 require 'matchy_matchy/matchmaker'
 
 module MatchyMatchy
+  private_constant :Match
+  private_constant :Matchbook
+  private_constant :MatchList
+  private_constant :MatchResults
 end
