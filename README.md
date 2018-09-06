@@ -2,7 +2,7 @@
 
 A cute little implementation of the [Stable Match
 algorithm](http://www.nrmp.org/), built by and for
-the New Zealand Improv Festival
+the [New Zealand Improv Festival](https://nzif.info).
 
 ## Installation
 
@@ -22,7 +22,56 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+The `MatchMaker` takes two sets of data:
+
+* a `Hash` of `candidates` and their preferred targets
+* a `Hash` of `targets` to tuples containing their preferred targets and the
+  number of candidates they're allowed to select
+
+Calling `perform` on a `MatchMaker` yields an object that can return the
+assignments keyed either `by_candidate` or `by_target`.
+
+```ruby
+candidates = {
+  'Arthur'  => %w[City],
+  'Sunny'   => %w[City Mercy],
+  'Joseph'  => %w[City General Mercy],
+  'Latha'   => %w[Mercy City General],
+  'Darrius' => %w[City Mercy General],
+}
+
+targets = {
+  'Mercy'   => [%w[Darrius Joseph], 2],
+  'City'    => [%w[Darrius Arthur Sunny Latha Joseph], 2],
+  'General' => [%w[Darrius Arthur Joseph Latha], 2],
+}
+
+results = MatchyMatchy::MatchMaker.perform(
+  targets: targets,
+  candidates: candidates
+)
+
+results.by_candidate
+# {
+#  'Arthur'  => 'City',
+#  'Sunny'   => nil,
+#  'Joseph'  => 'General',
+#  'Latha'   => 'General',
+#  'Darrius' => 'City',
+# }
+
+results.by_target
+# {
+#  'Mercy'   => []
+#  'City'    => ['Darrius', 'Arthur'],
+#  'General' => ['Joseph', 'Latha'],
+# }
+```
+
+The `candidates` and `targets` can be pretty much any type of object.
+They can even clash, which makes it safe to use things like database IDs
+unambiguously: equal objects that are referenced in both collections
+will be treated separately by the `MatchMaker`.
 
 ## Development
 
