@@ -4,6 +4,8 @@ A cute little implementation of the [Stable Match
 algorithm](http://www.nrmp.org/), built by and for
 the [New Zealand Improv Festival](https://nzif.info).
 
+[![Maintainability](https://api.codeclimate.com/v1/badges/e9b46ac5ed632d5c83f6/maintainability)](https://codeclimate.com/github/fauxparse/matchy_matchy/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/e9b46ac5ed632d5c83f6/test_coverage)](https://codeclimate.com/github/fauxparse/matchy_matchy/test_coverage)
+
 ## Installation
 
 Add this line to your application's Gemfile:
